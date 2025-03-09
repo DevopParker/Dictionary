@@ -1,0 +1,72 @@
+command <required> [optional]
+
+Git commands are dividen into high-level (porcelain) commands and low-level (plumbing) commands 
+
+Git configuration: global and the repo(project) level
+git config --get user.name
+git config --get user.email
+git config --add --global user.name "username"
+git config --add --global user.email "email@example.com"
+
+Set a default branch:
+git config --global init.defaultBranch master
+	git's default branch is master, GitHubs is main
+cat ~/.gitconfig this file stores your global Git configuration
+
+1. First step of any project is to create a repository
+	A Git "repository" or repo represents a single project
+	A repo is just a directory that contains the project directories and files
+	.git is the hidden directory that Git stores its internal tracking and versioning info for the project
+git init
+	creates the hidden .git directory (a new Git repo)
+
+A file can be in one of several states in a Git repository. Here are a few important ones:
+	untracked: Not being tracked by Git
+	staged: Marked for inclusion in the next commit
+	committed: Saved to the repository's history
+
+git status
+	shows you the current state of your repo. It will tell you which files are untracked,staged and commited
+
+2. Always have a table of contents
+	create a contents.md file and add "# contents"
+
+git add <path-to-file | pattern>
+	add the file to the index so its not untracked
+	Without staging, every file in the repo would be included in every commit
+
+git commit -m "your message"
+	A commit is a snapshot of the repo at a given point in time
+	Its a way to save the state of the repository, and it's how Git
+	keeps track of changes to the project.
+
+git log
+	--no-pager log -n 10 limits the number of commits shown
+	Shows a history of the commits in a repository
+	Who made it
+	When the commit was made
+	What was changed
+	Shows a unique identifier called a "commit hash"
+	You can use the first 7 digits to refer to a specific commit hash
+
+Plumbing tools:
+cat-file -p <hash>
+	Allows us to see the contents of a commit without needing to find it in the .git/objects file
+Terms to know:
+tree: git's way of storing a directory
+blob: git's way of storing a file
+
+66693b8d72daef9170108c6ab4b3abd7f3950dd2
+
+
+
+
+
+git status
+git add
+git commit
+git push
+git pull
+git log
+
+

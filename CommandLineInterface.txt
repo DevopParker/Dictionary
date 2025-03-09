@@ -1,0 +1,55 @@
+history
+	shows all previous commands entered
+head -n numberOfLines /directory
+tail -n numberofLines /directory
+less -N /directory
+	use spacebar to go go down the text
+	use B to go back up
+	use q to quit
+touch new_file.txt new_file2.txt
+	create multiple files
+mkdir new_directory
+pwd - print working directory
+whoami - current user
+mv some_file.txt /directory_path/
+	mv can move files, but it can also rename them
+rm -r some_directory
+	-r flag tells the rm command to delete a directory and all of its contents recursively
+cp source_file destination/
+	-R flag allows you to copy a directory and all of its contents recursively
+grep "word" file.txt
+	case-sensitive search
+	you can add multiple files to search
+	-r flag searches an entire directory including all subdirectories
+. the dot is a special alias for the current directory
+find some_directory -name file.txt
+	finding files and directories by name, not by their contents
+	find a file that match a pattern with -name "*.txt"
+	-name "*name*" for files with anything related inside the *_*
+* is a wildcard character that matches anything
+rwx
+	read
+	write
+	execute
+drwxrwxrwx
+	d means directory, - means file
+	r-x any dashs represent a command not allowed by the user
+	the first three rwx represent owner
+	the second three rwx represent a group
+	the third set of rwx represent everyone else
+chmod -R u=rwx,g=,o= DIRECTORY
+	"change mode" lets you change the permissions of a file or directory
+	u= owner, g= group, o= everyone else. Leaving g= blank means setting the permissions to none.
+	-R flag allows you to recursively do this to all of the contents of the directory
+i	-x flag removes the executable permission from the file
+	+x flag adds the executable permission to the file
+chown root directory
+	change owners of the file
+	-R Recursively changes all permissions inside the directory
+ls -l
+	the -l flag allows you to see the permissions of each file and directory
+.sh extension are shell scripts. These contain shell commands
+./program.sh you need the ./ so the shell knows its a program not a command like ls
+sudo command gives access as the superuser to elevated permissions
+which program
+	locate a program file in the users path
