@@ -1,0 +1,31 @@
+Find an array length:
+        .length
+
+Find a char of a string
+        .charAt(index)
+
+For loop without i:
+        for (double value : numbersArray) {
+                result += value;
+        }
+
+Replace a character in a Java string
+        str.replace(oldChar, newChar);
+        str.replace(newString, oldString); #This also works for replacing all spaces with nothing.
+        str.replaceAll("\\s", "") #replace all whitespaces.
+
+The modulo operator (%) is used to find the remainder of a division
+        This can be used to check if a number is even or odd.
+        if the remainder is != 0 it's odd, else its even.
+
+The ? can be used as an if statement.
+        (if) ? doThis : elseDoThis
+
+isDigit(string.charAt(index)) will return true if it's a digit.
+isLetter(string.charAt(index)) will return true if it's a letter.
+instanceof to check for String, int...
+
+List<Type> list
+list.add()
+list.remove()
+list.size()
