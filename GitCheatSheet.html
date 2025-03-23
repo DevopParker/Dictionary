@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git Cheat Sheet</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #3498db;
+      margin-bottom: 30px;
+    }
+    h2 {
+      color: #2980b9;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+    h3 {
+      color: #3498db;
+      margin-top: 25px;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f1f1f1;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 15px 0;
+      border-left: 4px solid #3498db;
+    }
+    .command-block {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .note {
+      background-color: #fffacd;
+      border-left: 4px solid #ffcc00;
+      padding: 10px 15px;
+      margin: 15px 0;
+      border-radius: 2px;
+    }
+    .explanation {
+      background-color: #e8f4fd;
+      border-left: 4px solid #3498db;
+      padding: 10px 15px;
+      margin: 15px 0;
+      border-radius: 2px;
+    }
+    ol {
+      padding-left: 25px;
+    }
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      padding: 0;
+      border: none;
+      color: white;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      color: #777;
+      font-size: 0.9em;
+    }
+    .workflow-step {
+      background-color: #f1f8e9;
+      border-left: 4px solid #7cb342;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 2px;
+    }
+    .workflow-step h4 {
+      margin-top: 0;
+      color: #33691e;
+    }
+    .workflow-section {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .workflow-section h3 {
+      margin-top: 0;
+      color: #2980b9;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+    tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Git Cheat Sheet</h1>
+  </div>
+
+  <div class="section">
+    <h2>Quick Setup</h2>
+    <p>Get started by creating a new file or uploading an existing file. We recommend every repository include a README, LICENSE, and .gitignore.</p>
+    
+    <h3>Create a new repository on the command line:</h3>
+    <pre>echo "# MOOCJava" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Username/Repository.git
+git push -u origin main</pre>
+    
+    <div class="explanation">
+      <p><strong>What's happening:</strong></p>
+      <ul>
+        <li><code>echo "# MOOCJava" >> README.md</code> - Creates a README file with a header</li>
+        <li><code>git init</code> - Initializes a new Git repository in the current directory</li>
+        <li><code>git add README.md</code> - Stages the README file for commit</li>
+        <li><code>git commit -m "first commit"</code> - Creates your first commit with the staged file</li>
+        <li><code>git branch -M main</code> - Renames the default branch to "main"</li>
+        <li><code>git remote add origin [URL]</code> - Links your local repository to the remote GitHub repository</li>
+        <li><code>git push -u origin main</code> - Pushes your code to GitHub and sets up tracking</li>
+      </ul>
+    </div>
+    
+    <h3>Push an existing repository from the command line:</h3>
+    <pre>git remote add origin https://github.com/Username/Repository.git
+git branch -M main
+git push -u origin main</pre>
+
+    <div class="explanation">
+      <p><strong>What's happening:</strong></p>
+      <ul>
+        <li><code>git remote add origin [URL]</code> - Connects your existing repository to GitHub</li>
+        <li><code>git branch -M main</code> - Ensures your primary branch is named "main"</li>
+        <li><code>git push -u origin main</code> - Uploads your code and sets the upstream reference</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Recommended Git Workflow</h2>
+    
+    <div class="workflow-section">
+      <h3>Step-by-Step Development Workflow</h3>
+      
+      <div class="workflow-step">
+        <h4>Step 1: Set up your environment</h4>
+        <pre>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global color.ui auto</pre>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 2: Create or clone a repository</h4>
+        <pre># Option 1: Create a new repository
+git init project-name
+cd project-name
+
+# Option 2: Clone an existing repository
+git clone https://github.com/username/repository.git
+cd repository</pre>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 3: Create a feature branch</h4>
+        <pre>git checkout main     # Start from main branch
+git pull             # Make sure you're up to date
+git checkout -b feature/my-feature</pre>
+        <p>Always work in a feature branch, never directly on main.</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 4: Make changes and commit regularly</h4>
+        <pre># Check status often
+git status
+
+# Add specific files or all changes
+git add file.txt
+git add .
+
+# Commit with descriptive message
+git commit -m "Add login functionality"</pre>
+        <p>Make focused, logical commits with clear messages.</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 5: Stay in sync with main</h4>
+        <pre>git checkout main
+git pull
+git checkout feature/my-feature
+git merge main</pre>
+        <p>Regularly incorporate changes from main to avoid large merge conflicts later.</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 6: Push your branch</h4>
+        <pre>git push -u origin feature/my-feature</pre>
+        <p>The -u flag sets up tracking so you can just use "git push" next time.</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 7: Create a Pull Request</h4>
+        <p>Go to your repository on GitHub or similar platform:</p>
+        <ul>
+          <li>Click "Compare & pull request"</li>
+          <li>Add a title and detailed description</li>
+          <li>Request reviews from team members</li>
+        </ul>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 8: Address feedback</h4>
+        <pre># Make changes based on reviews
+git add .
+git commit -m "Address review feedback"
+git push</pre>
+        <p>The pull request will update automatically.</p>
+      </div>
+
+      <div class="workflow-step">
+        <h4>Step 9: Merge and clean up</h4>
+        <pre># After PR is approved and merged
+git checkout main
+git pull
+git branch -d feature/my-feature       # Delete local branch
+git push origin --delete feature/my-feature   # Optional: delete remote branch</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Essential Git Commands</h2>
+    
+    <div class="command-block">
+      <h3>Git Configuration</h3>
+      <pre>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global color.ui auto</pre>
+      <p>Configuration is the first step in any Git workflow. These settings identify you as the author of your work and customize your Git environment.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Starting a Project</h3>
+      <pre>git init [project name]      # Create a new local repository
+git clone &lt;project url&gt;     # Download a project with entire history</pre>
+      <p>You can either start a new project from scratch with <code>init</code> or download an existing project with <code>clone</code>.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Day-to-Day Work</h3>
+      <pre>git status                  # Display current working directory status
+git add [file]               # Add file to staging area
+git diff [file]              # Show changes between working directory and staging
+git diff --staged [file]     # Show changes between staging and repository
+git checkout -- [file]       # Discard changes in working directory
+git reset [path]             # Unstage changes
+git commit                   # Commit staged changes
+git commit -m "message"      # Commit with inline message
+git rm [file]                # Remove file from working directory and staging</pre>
+    </div>
+    
+    <div class="command-block">
+      <h3>Working with Branches</h3>
+      <pre>git branch                  # List local branches
+git branch -a               # List all branches (local and remote)
+git branch [branch_name]    # Create new branch at current HEAD
+git checkout [branch_name]  # Switch to specified branch
+git checkout -b [branch]    # Create and switch to new branch
+git merge [branch_name]     # Merge branch into current branch
+git branch -d [branch_name] # Delete a branch
+git rebase [branch_name]    # Rebase current branch onto specified branch</pre>
+      <p>Branches are Git's way of enabling parallel development. Create feature branches for new work and merge them back when ready.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Stashing Changes</h3>
+      <pre>git stash                  # Save current changes temporarily
+git stash pop               # Apply stashed changes and remove from stash
+git stash drop              # Delete a stash</pre>
+      <p>Stashing allows you to save your work-in-progress when you need to switch contexts or branches without committing incomplete work.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>History and Inspection</h3>
+      <pre>git log                             # View commit history
+git log --oneline --graph --decorate   # Compact history with branch visualization
+git reflog                           # List operations made on local repository</pre>
+    </div>
+    
+    <div class="command-block">
+      <h3>Tagging</h3>
+      <pre>git tag                    # List all tags
+git tag [name] [commit]     # Create tag for specified commit
+git tag -a [name] -m "msg"  # Create annotated tag
+git tag -d [name]           # Delete a tag</pre>
+      <p>Tags are references to specific points in Git history and are typically used to mark release points (v1.0, v2.0, etc.).</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Undoing Changes</h3>
+      <pre>git reset [--hard] [target]  # Reset current HEAD to specified state
+git revert [commit]         # Create new commit that undoes changes</pre>
+      <div class="note">
+        <p><strong>Caution:</strong> <code>git reset --hard</code> will discard all uncommitted changes. Make sure you want to do this before running the command.</p>
+      </div>
+    </div>
+    
+    <div class="command-block">
+      <h3>Remote Operations</h3>
+      <pre>git fetch [remote]          # Download objects and refs from remote
+git pull [remote]           # Fetch and merge from remote
+git push [--tags] [remote]  # Push local changes to remote
+git push -u [remote] [branch] # Push and set upstream reference</pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Cloning</h2>
+    
+    <div class="command-block">
+      <h3>Clone a repository:</h3>
+      <pre>git clone https://github.com/Username/Repository.git</pre>
+      <p>Downloads a copy of the repository to your local machine with full history.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Clone a specific branch:</h3>
+      <pre>git clone -b branch-name https://github.com/Username/Repository.git</pre>
+      <p>Clones the repository but checks out the specified branch instead of the default branch.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Clone with a specific directory name:</h3>
+      <pre>git clone https://github.com/Username/Repository.git custom-directory-name</pre>
+      <p>Clones the repository into a folder with the specified name instead of the default repository name.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Shallow clone (only recent history):</h3>
+      <pre>git clone --depth=1 https://github.com/Username/Repository.git</pre>
+      <p>Creates a shallow clone with only the most recent commit, useful for large repositories when you don't need the full history.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Forking</h2>
+    
+    <h3>Fork workflow:</h3>
+    <ol>
+      <li>Fork the repository on GitHub (click the "Fork" button)</li>
+      <li>Clone your fork locally:
+        <pre>git clone https://github.com/YOUR-USERNAME/Repository.git</pre>
+      </li>
+      <li>Add the original repository as upstream:
+        <pre>git remote add upstream https://github.com/ORIGINAL-OWNER/Repository.git</pre>
+      </li>
+      <li>Verify remotes:
+        <pre>git remote -v</pre>
+      </li>
+    </ol>
+
+    <div class="explanation">
+      <p><strong>What is forking?</strong> Forking creates a personal copy of someone else's repository on GitHub. This lets you freely experiment with changes without affecting the original project. Forks are commonly used to propose changes to someone else's project or to use someone else's project as a starting point for your own idea.</p>
+      <p><strong>When to use forking:</strong> Use forking when you want to contribute to a project you don't have write access to, or when you want to use someone else's project as a base for your own work.</p>
+    </div>
+    
+    <div class="command-block">
+      <h3>Sync your fork with the original repository:</h3>
+      <pre>git fetch upstream
+git checkout main
+git merge upstream/main
+git push origin main</pre>
+      <p>This pulls in changes from the original repository to keep your fork up to date.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Ignoring Files</h2>
+    <pre>cat <<EOF > .gitignore
+/logs/*
+!logs/.gitkeep
+/tmp
+*.swp
+EOF</pre>
+    <p>To ignore files, create a .gitignore file in your repository with a line for each pattern. File ignoring will work for the current and sub directories where .gitignore file is placed. In this example, all files are ignored in the logs directory (excluding the .gitkeep file), whole tmp directory and all files *.swp.</p>
+  </div>
+
+  <div class="explanation">
+    <h3>Understanding Git Terminology</h3>
+    <ul>
+      <li><strong>Repository</strong>: The collection of files and their complete history</li>
+      <li><strong>Working directory</strong>: The files that you see and edit</li>
+      <li><strong>Staging area</strong>: A place to prepare what goes into your next commit</li>
+      <li><strong>Commit</strong>: A snapshot of your files at a specific point in time</li>
+      <li><strong>Branch</strong>: A parallel version of a repository</li>
+      <li><strong>Remote</strong>: A version of your repository hosted elsewhere (like GitHub)</li>
+      <li><strong>Pull Request</strong>: A way to propose changes and request review</li>
+      <li><strong>Merge</strong>: Combining changes from different branches</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <p><strong>Note:</strong> Always be careful with commands that can destroy history, like <code>git reset --hard</code> or <code>git push -f</code>. These can permanently delete work if used incorrectly.</p>
+  </div>
+
+  <div class="footer">
+    <p>Git Cheat Sheet for MOOCJava - Created on March 23, 2025</p>
+  </div>
+</body>
+</html>
