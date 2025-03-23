@@ -53,3 +53,6 @@ ls -l
 sudo command gives access as the superuser to elevated permissions
 which program
 	locate a program file in the users path
+alias creates a short in the terminal to run commands such as ls
+	alias l='ls -l' can create that l command
+	They are defined to your shells config files such as ~/.bash_profile or ~/.zshrc
